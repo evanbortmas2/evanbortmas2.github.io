@@ -96,12 +96,12 @@
 						guessesLeft--
 					}
 					
-		} else if(event.keyCode <= 65 && event.keyCode >= 90 && guessesLeft >= 1){ //If user input is not a letter from the alphabet
+		} else if(event.keyCode <= 65 || event.keyCode >= 90 && guessesLeft >= 1){ //If user input is not a letter from the alphabet
 			// Alert the user
 			alert("Please be sure to select a letter from the Alphabet (from a to z)");
 		}
         
-        else if (guessesLeft >= 0){
+        else if (guessesLeft <= 0){
                 confirmNew();
                 }
 	}
