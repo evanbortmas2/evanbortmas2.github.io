@@ -1,0 +1,134 @@
+body {
+	background-color: #20355F;
+	font-family: 'Poppins', sans-serif;
+	color: #ffffff;
+}
+
+#title {
+	margin-top: 45px;
+}
+
+#gameInstructions {
+	font-size: 170%;
+	margin-top: 25px;
+    font-family: 'Playfair Display SC', serif;
+}
+
+#inst {
+    font-family: 'Poppins', sans-serif;
+    font-weight:00;
+    line-height: 2px;
+}
+
+#gameContainer {
+	margin-top: -15px;
+	padding: 30px;
+}
+
+#leftColumn {
+/*	border: 1px solid #FFFFFF;*/
+/*	padding: 30px;*/
+/*    height: 330px;*/
+}
+
+#rightColumn {
+/*	border: 1px solid #FFFFFF; */
+	padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 5px;
+    padding-bottom: 25px;
+/*	height: 450px;*/
+}
+
+#currentWord {
+	text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+#current{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;   
+}
+
+#theWord {
+	font-size: 160%;
+	background-color: #252525; 
+	line-height: 2.5;
+	border-radius: 5px;
+	margin-bottom: 20px;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+#winLose {
+	margin: auto;
+	border: 1px dashed #FFFFFF;
+	margin-top: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+#wins, #losses{
+	height: 40px;
+	font-size: 160%;
+	line-height: 40px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+#remGuesses {
+	margin-top: 5px;
+	margin-bottom: 30px;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+#guessedLetters {
+	background-color: #8A2020;
+	color: #ffffff;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/*
+.imgDivs {
+	margin-bottom: 30px;
+}
+*/
+
+/*
+.names {
+	font-size: 70%;
+	font-weight: 700;
+	letter-spacing: 1px;
+	margin-top: 5px;
+	text-align: center;
+}
+*/
+
+/*
+#upsideDown {
+	transform: rotate(180deg);
+}
+*/
+
+/*
+#song {
+	margin-top: 30px;
+}
+*/
+
+#test {
+    background-color: #FFFFFF;
+}
+
+img {
+    min-width:100%;
+/*    max-height: 100%;*/
+    min-height: 100%;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit:cover;
+}
