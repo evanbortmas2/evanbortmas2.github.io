@@ -31,44 +31,17 @@
 // FUNCTIONS
 // ========
 
-//document.getElementById("currentWord").onclick().focus();
-
-    function preloadImage(url)
-        {
-            var img=new Image();
-            img.src="assets/images/s2.png";
-        }
-        {
-            var img=new Image();
-            img.src="assets/images/s3.png";
-        }
-        {
-            var img=new Image();
-            img.src="assets/images/s4.png";
-        }
-        {
-            var img=new Image();
-            img.src="assets/images/s5.png";
-        }
-        {
-            var img=new Image();
-            img.src="assets/images/s6.png";
-        }
-
 	//Create a function that starts a new game
 	function newGame () {
 
 		//Computer selects a word from the array
 		currentWord = strangerThings[Math.floor(Math.random() * strangerThings.length)];
-			console.log("The current word chosen is: " + currentWord); // Testing via Console.Log
 
 		//Grab the current word and break it apart into each individual letter
 		currWrdLtrs = currentWord.split("");
-			console.log("The current word's letters are: " + currWrdLtrs); // Testing via Console.Log
 
 		//Grab the current word and get the number of letters in it
 		numBlanks = currWrdLtrs.length;
-			console.log("The number of letters in the current word is: " + numBlanks); // Testing via Console.Log
 
 		//Reset game variables needed to be cleared before each new game starts
 		guessesLeft = 5;
@@ -84,7 +57,6 @@
 		//Add the correct number of blanks to the answerDisplay that corresponds with the length of the currentWord
 		for (i = 0; i < numBlanks; i++) {
 			answerDisplay.push("_");
-			console.log(answerDisplay); // Testing via Console.Log
 		}
 
 		//Change HTML elements to display current information
@@ -98,7 +70,7 @@
 	function checkLtrs(letter) {
 
 		//Check if the letter pressed is an actual letter
-		if (event.keyCode >= 65 && event.keyCode <= 90) { //If the letter pressed IS part of the alphabet, then run the comparison:
+		if (event.keyCode >= 65 && event.keyCode <= 90 && guessesLeft >= 1) { //If the letter pressed IS part of the alphabet, then run the comparison:
 
 					//Check if the letter guessed is one of the letters in the word
 					var correctLetter = false;
@@ -123,30 +95,29 @@
 						wrongLtrs.push(letter);
 						guessesLeft--
 					}
-
-					//testing via console
-					console.log(answerDisplay);
 					
-		} else { //If user input is not a letter from the alphabet
+		} else if(event.keyCode <= 65 && event.keyCode >= 90 && guessesLeft >= 1){ //If user input is not a letter from the alphabet
 			// Alert the user
 			alert("Please be sure to select a letter from the Alphabet (from a to z)");
 		}
+        
+        else if (guessesLeft >= 0){
+                confirmNew();
+                }
 	}
 
 	function roundComplete() {
-		console.log("Win count: " + wins +  " | Loss Count: " + losses + " | Guesses Left: " + guessesLeft)
 
 		//Update HTML with Game Stats
 		document.getElementById("remGuesses").innerHTML = "Number of Guesses Remaining: " + " " + guessesLeft;
 		document.getElementById("theWord").innerHTML = answerDisplay.join(" ");
-		document.getElementById("guessedLetters").innerHTML = "Letters Already Guessed:" + " " + wrongLtrs.join(" ");
+//		document.getElementById("guessedLetters").innerHTML = "Letters Already Guessed:" + " " + wrongLtrs.join(" ");
 
 
 		//Check if the user won
 		if (currWrdLtrs.toString() == answerDisplay.toString()) {
 			wins++;
-			alert("CONTRATULATIONS! You guessed '" + currentWord + "' correctly. Try another round?");
-			console.log("YOU WIN!");
+			alert("CONTRATULATIONS! You guessed '" + currentWord + "' correctly. Go get your gifts from the laundry machine!");
 
 			// Update the wins in the HTML doc
 			document.getElementById("wins").innerHTML = "Wins: " + " " + wins;
@@ -157,19 +128,27 @@
 
 		} else if (guessesLeft == 0) { //Check if user lost
 			losses++;
-			document.getElementById("test").innerHTML = '<img src="assets/images/stage6.png" alt="stage1" class="center-block img-responsive">';
-			console.log("You Lost!");
+			document.getElementById("test").innerHTML = '<img src="assets/images/s6.png" alt="stage6" class="center-block img-responsive">';
 
 			// Update the wins in the HTML doc
 			document.getElementById("losses").innerHTML = "Losses: " + " " + losses;
 
 			//Start New Game
-			newGame();
 			document.getElementById("guessedLetters").innerHTML = "Letters Already Guessed:" + " " + " ";
-
+            
+             setTimeout(function() {
+                confirmNew();
+             },100)
 		}
 	}
 
+function confirmNew(){
+    document.getElementById("test").innerHTML = '<img src="assets/images/s6.png" alt="stage6" class="center-block img-responsive">';
+    var answer = confirm("Trump wins! :( Try again?");
+        if(answer == true){
+            newGame();
+       }	
+}
 
 
 
@@ -183,7 +162,6 @@
 	document.onkeyup = function(event) {
 		//Create a variable to hold all the letters that have been guessed
 		var ltrsGuessed = String.fromCharCode(event.keyCode).toLowerCase();
-			console.log("You Guessed the letter: " + ltrsGuessed); // Testing via Console.Log
 
 		//Run the check letters function
 		checkLtrs(ltrsGuessed);
@@ -191,29 +169,23 @@
 
 		//Game interation with the images (Guesses Left, as displayed by images)
 		if (guessesLeft <= 4) {
-			document.getElementById("test").innerHTML = '<img src="assets/images/s2.png" alt="mike" class="center-block img-responsive">';
+			document.getElementById("test").innerHTML = '<img src="assets/images/s2.png" alt="stage2" class="center-block img-responsive">';
 		}
 
 		if (guessesLeft <= 3) {
-			document.getElementById("test").innerHTML = '<img src="assets/images/s3.png" alt="stage1" class="center-block img-responsive">';
+			document.getElementById("test").innerHTML = '<img src="assets/images/s3.png" alt="stage3" class="center-block img-responsive">';
 		}
 
 		if (guessesLeft <= 2) {
-			document.getElementById("test").innerHTML = '<img src="assets/images/s4.png" alt="stage1" class="center-block img-responsive">';
+			document.getElementById("test").innerHTML = '<img src="assets/images/s4.png" alt="stage4" class="center-block img-responsive">';
 		}
 
 		if (guessesLeft <= 1) {
-			document.getElementById("test").innerHTML = '<img src="assets/images/s5.png" alt="stage1" class="center-block img-responsive">';
+			document.getElementById("test").innerHTML = '<img src="assets/images/s5.png" alt="stage5" class="center-block img-responsive">';
+		}
+        
+        if (guessesLeft <= 0) {
+			document.getElementById("test").innerHTML = '<img src="assets/images/s6.png" alt="stage6" class="center-block img-responsive">';
 		}
         
 	}
-
-
-
-
-
-
-
-
-
-
